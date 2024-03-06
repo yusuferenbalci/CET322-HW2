@@ -1,0 +1,104 @@
+﻿@model Book
+
+<form id="bookForm" asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" id="Title" />
+        <span id="titleError" class="text-danger" style="display:none;">Lütfen kitap adını girin.</span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Author" class="control-label"></label>
+        <input asp-for="Author" class="form-control" id="Author" />
+        <span id="authorError" class="text-danger" style="display:none;">Lütfen yazar adını girin.</span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <textarea asp-for="Description" class="form-control" id="Description"></textarea>
+        <span id="descriptionError" class="text-danger" style="display:none;">Lütfen açıklamayı girin.</span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PublishDate" class="control-label"></label>
+        <input asp-for="PublishDate" class="form-control" id="PublishDate" />
+        <span id="publishDateError" class="text-danger" style="display:none;">Lütfen yayın tarihini girin.</span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price" class="control-label"></label>
+        <input asp-for="Price" class="form-control" id="Price" />
+        <span id="priceError" class="text-danger" style="display:none;">Lütfen fiyatı girin.</span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PageSize" class="control-label"></label>
+        <input asp-for="PageSize" class="form-control" id="PageSize" />
+        <span id="pageSizeError" class="text-danger" style="display:none;">Lütfen sayfa sayısını girin.</span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Kaydet" class="btn btn-primary" />
+    </div>
+</form>
+<script>
+    window.onload = function () {
+        document.getElementById('titleError').style.display = 'none';
+        document.getElementById('authorError').style.display = 'none';
+        document.getElementById('descriptionError').style.display = 'none';
+        document.getElementById('publishDateError').style.display = 'none';
+        document.getElementById('priceError').style.display = 'none';
+        document.getElementById('pageSizeError').style.display = 'none';
+    };
+
+    
+    document.getElementById('bookForm').onsubmit = function () {
+        var title = document.getElementById('Title').value.trim();
+        var author = document.getElementById('Author').value.trim();
+        var description = document.getElementById('Description').value.trim();
+        var publishDate = document.getElementById('PublishDate').value.trim();
+        var price = document.getElementById('Price').value.trim();
+        var pageSize = document.getElementById('PageSize').value.trim();
+
+        var hasError = false;
+
+        if (title === '') {
+            document.getElementById('titleError').style.display = 'block';
+            hasError = true;
+        } else {
+            document.getElementById('titleError').style.display = 'none';
+        }
+
+        if (author === '') {
+            document.getElementById('authorError').style.display = 'block';
+            hasError = true;
+        } else {
+            document.getElementById('authorError').style.display = 'none';
+        }
+
+        if (description === '') {
+            document.getElementById('descriptionError').style.display = 'block';
+            hasError = true;
+        } else {
+            document.getElementById('descriptionError').style.display = 'none';
+        }
+
+        if (publishDate === '') {
+            document.getElementById('publishDateError').style.display = 'block';
+            hasError = true;
+        } else {
+            document.getElementById('publishDateError').style.display = 'none';
+        }
+
+        if (price === '') {
+            document.getElementById('priceError').style.display = 'block';
+            hasError = true;
+        } else {
+            document.getElementById('priceError').style.display = 'none';
+        }
+
+        if (pageSize === '') {
+            document.getElementById('pageSizeError').style.display = 'block';
+            hasError = true;
+        } else {
+            document.getElementById('pageSizeError').style.display = 'none';
+        }
+
+        return !hasError;
+    };</script>
+
